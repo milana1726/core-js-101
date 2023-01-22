@@ -317,13 +317,13 @@ function isCreditCardNumber(ccn) {
  */
 function getDigitalRoot(num) {
   const getSum = (x) => x.toString().split('').reduce((a, b) => Number(a) + Number(b), 0);
-  let result = getSum(num);
+  const result = getSum(num);
 
-  while (result > 9) {
-    result = getSum(num);
+  if (result > 9) {
+    return getSum(result);
   }
 
-  return result;
+  return getSum(num);
 }
 
 
@@ -423,7 +423,8 @@ function getCommonDirectoryPath(pathes) {
  *
  */
 function getMatrixProduct(m1, m2) {
-  const arr = 0;
+  const arr = [];
+
   for (let i = 0; i < m1.length; i += 1) {
     arr[i] = [];
     for (let j = 0; j < m2[0].length; j += 1) {
@@ -434,6 +435,7 @@ function getMatrixProduct(m1, m2) {
       arr[i][j] = result;
     }
   }
+
   return arr;
 }
 
